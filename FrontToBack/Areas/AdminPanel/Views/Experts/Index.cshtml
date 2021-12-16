@@ -1,0 +1,45 @@
+﻿@model List<FlowerExpertsImage>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Experts</h4>
+                <a class="btn btn-success" asp-action="Create">Create</a>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Images</th>
+                                <th>ExpertsName</th>
+                                <th>ExpersField</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td> <img src="~/img/@item.Image" alt="Alternate Text" /> </td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Experts</td>
+                                    <td>
+                                        <a class="btn btn-warning"  asp-action="Update" asp-route-id="@item.Id">Update</a>
+                                        <a class="btn btn-success" asp-controller="Experts" asp-action="Detail" asp-route-id="@item.Id">Detail</a>
+                                        <a class="btn btn-danger"  asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
